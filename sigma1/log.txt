@@ -1,0 +1,251 @@
+dnnlib: Running train.train() on localhost...
+
+sub_config++++++++++++++++++++++
+{'run_dir_root': 'results', 'run_desc': 'autoencoder-n2n', 'run_dir_ignore': ['__pycache__', '*.pyproj', '*.sln', '*.suo', '.cache', '.idea', '.vs', '.vscode', 'datasets', 'results'], 'run_dir_extra_files': None, 'submit_target': <SubmitTarget.LOCAL: 1>, 'num_gpus': 2, 'print_info': False, 'ask_confirmation': False, 'use_typeguard': False, 'run_id': 1, 'run_name': '00001-autoencoder-n2n', 'run_dir': 'results/00001-autoencoder-n2n', 'run_func_name': 'train.train', 'run_func_kwargs': {'iteration_count': 50000, 'eval_interval': 1000, 'minibatch_size': 10, 'learning_rate': 0.0003, 'ramp_down_perc': 0.5, 'noise': {'func_name': 'train.AugmentGaussian', 'train_stddev_rng_range': (0.0, 50.0), 'validation_stddev': 25.0}, 'noise2noise': True, 'train_tfrecords': 'datasets/imagenet_val.tfrecords', 'validation_config': {'dataset_dir': 'datasets/kodak'}}, 'user_name': 'hanruizou', 'task_name': 'hanruizou-00001-autoencoder-n2n', 'host_name': 'localhost'}
++++++++++++++++++++++++++++++++
+
+the num of validataion set is 24!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Setting up dataset source from datasets/imagenet_val.tfrecords
+
+create dataset:========= Created an Iterator for enumerating the data of this dataset.
+
+autoencoder                 Params      OutputShape             WeightShape             
+---                         ---         ---                     ---                     
+x                           -           (?, 3, 256, 256)        -                       
+enc_conv0                   1344        (?, 48, 256, 256)       (3, 3, 3, 48)           
+enc_conv1                   20784       (?, 48, 256, 256)       (3, 3, 48, 48)          
+MaxPool                     -           (?, 48, 128, 128)       -                       
+enc_conv2                   20784       (?, 48, 128, 128)       (3, 3, 48, 48)          
+MaxPool_1                   -           (?, 48, 64, 64)         -                       
+enc_conv3                   20784       (?, 48, 64, 64)         (3, 3, 48, 48)          
+MaxPool_2                   -           (?, 48, 32, 32)         -                       
+enc_conv4                   20784       (?, 48, 32, 32)         (3, 3, 48, 48)          
+MaxPool_3                   -           (?, 48, 16, 16)         -                       
+enc_conv5                   20784       (?, 48, 16, 16)         (3, 3, 48, 48)          
+MaxPool_4                   -           (?, 48, 8, 8)           -                       
+enc_conv6                   20784       (?, 48, 8, 8)           (3, 3, 48, 48)          
+Upscale2D                   -           (?, 48, 16, 16)         -                       
+dec_conv5                   83040       (?, 96, 16, 16)         (3, 3, 96, 96)          
+dec_conv5b                  83040       (?, 96, 16, 16)         (3, 3, 96, 96)          
+Upscale2D_1                 -           (?, 96, 32, 32)         -                       
+dec_conv4                   124512      (?, 96, 32, 32)         (3, 3, 144, 96)         
+dec_conv4b                  83040       (?, 96, 32, 32)         (3, 3, 96, 96)          
+Upscale2D_2                 -           (?, 96, 64, 64)         -                       
+dec_conv3                   124512      (?, 96, 64, 64)         (3, 3, 144, 96)         
+dec_conv3b                  83040       (?, 96, 64, 64)         (3, 3, 96, 96)          
+Upscale2D_3                 -           (?, 96, 128, 128)       -                       
+dec_conv2                   124512      (?, 96, 128, 128)       (3, 3, 144, 96)         
+dec_conv2b                  83040       (?, 96, 128, 128)       (3, 3, 96, 96)          
+Upscale2D_4                 -           (?, 96, 256, 256)       -                       
+dec_conv1a                  57088       (?, 64, 256, 256)       (3, 3, 99, 64)          
+dec_conv1b                  18464       (?, 32, 256, 256)       (3, 3, 64, 32)          
+dec_conv1                   867         (?, 3, 256, 256)        (3, 3, 32, 3)           
+---                         ---         ---                     ---                     
+Total                       991203                                                      
+
+Building TensorFlow graph...
+train_step------------>>apply_update????????
+[<tf.Tensor 'Train/ApplyGrads0/UpdateWeights/cond/Merge:0' shape=() dtype=bool>, <tf.Tensor 'Train/ApplyGrads1/UpdateWeights/cond/Merge:0' shape=() dtype=bool>, <tf.Tensor 'Train/ApplyGrads1/Statistics/summary_Train_learning_rate/Identity:0' shape=() dtype=float32>, <tf.Tensor 'Train/ApplyGrads1/Statistics/summary_Train_overflow_frequency/Identity:0' shape=() dtype=int32>]
+Training...
+
+Starting iterate the validation set
+Average PSNR: 11.09
+iter 0          time 33s          sec/eval 0.0     sec/iter 0.00    maintenance 32.9  
+
+Starting iterate the validation set
+Average PSNR: 23.33
+iter 1000       time 3m 34s       sec/eval 149.2   sec/iter 0.15    maintenance 32.0  
+
+Starting iterate the validation set
+Average PSNR: 22.16
+iter 2000       time 6m 05s       sec/eval 146.7   sec/iter 0.15    maintenance 4.4   
+
+Starting iterate the validation set
+Average PSNR: 21.53
+iter 3000       time 8m 36s       sec/eval 146.8   sec/iter 0.15    maintenance 4.4   
+
+Starting iterate the validation set
+Average PSNR: 21.20
+iter 4000       time 11m 08s      sec/eval 147.3   sec/iter 0.15    maintenance 4.4   
+
+Starting iterate the validation set
+Average PSNR: 21.02
+iter 5000       time 13m 40s      sec/eval 147.3   sec/iter 0.15    maintenance 4.5   
+
+Starting iterate the validation set
+Average PSNR: 20.94
+iter 6000       time 16m 12s      sec/eval 147.2   sec/iter 0.15    maintenance 4.4   
+
+Starting iterate the validation set
+Average PSNR: 20.88
+iter 7000       time 18m 43s      sec/eval 147.2   sec/iter 0.15    maintenance 4.5   
+
+Starting iterate the validation set
+Average PSNR: 20.84
+iter 8000       time 21m 15s      sec/eval 147.4   sec/iter 0.15    maintenance 4.5   
+
+Starting iterate the validation set
+Average PSNR: 20.79
+iter 9000       time 23m 47s      sec/eval 147.5   sec/iter 0.15    maintenance 4.4   
+
+Starting iterate the validation set
+Average PSNR: 20.71
+iter 10000      time 26m 19s      sec/eval 147.6   sec/iter 0.15    maintenance 4.5   
+
+Starting iterate the validation set
+Average PSNR: 20.70
+iter 11000      time 28m 51s      sec/eval 147.5   sec/iter 0.15    maintenance 4.4   
+
+Starting iterate the validation set
+Average PSNR: 20.69
+iter 12000      time 31m 23s      sec/eval 147.3   sec/iter 0.15    maintenance 4.4   
+
+Starting iterate the validation set
+Average PSNR: 20.69
+iter 13000      time 33m 55s      sec/eval 147.4   sec/iter 0.15    maintenance 4.5   
+
+Starting iterate the validation set
+Average PSNR: 20.66
+iter 14000      time 36m 26s      sec/eval 147.4   sec/iter 0.15    maintenance 4.4   
+
+Starting iterate the validation set
+Average PSNR: 20.67
+iter 15000      time 38m 58s      sec/eval 147.5   sec/iter 0.15    maintenance 4.4   
+
+Starting iterate the validation set
+Average PSNR: 20.67
+iter 16000      time 41m 30s      sec/eval 147.4   sec/iter 0.15    maintenance 4.4   
+
+Starting iterate the validation set
+Average PSNR: 20.65
+iter 17000      time 44m 02s      sec/eval 147.1   sec/iter 0.15    maintenance 4.4   
+
+Starting iterate the validation set
+Average PSNR: 20.64
+iter 18000      time 46m 33s      sec/eval 147.3   sec/iter 0.15    maintenance 4.4   
+
+Starting iterate the validation set
+Average PSNR: 20.63
+iter 19000      time 49m 06s      sec/eval 147.7   sec/iter 0.15    maintenance 4.4   
+
+Starting iterate the validation set
+Average PSNR: 20.62
+iter 20000      time 51m 38s      sec/eval 147.7   sec/iter 0.15    maintenance 4.5   
+
+Starting iterate the validation set
+Average PSNR: 20.60
+iter 21000      time 54m 10s      sec/eval 147.6   sec/iter 0.15    maintenance 4.5   
+
+Starting iterate the validation set
+Average PSNR: 20.60
+iter 22000      time 56m 42s      sec/eval 147.4   sec/iter 0.15    maintenance 4.4   
+
+Starting iterate the validation set
+Average PSNR: 20.59
+iter 23000      time 59m 13s      sec/eval 147.4   sec/iter 0.15    maintenance 4.4   
+
+Starting iterate the validation set
+Average PSNR: 20.61
+iter 24000      time 1h 01m 45s   sec/eval 147.4   sec/iter 0.15    maintenance 4.4   
+
+Starting iterate the validation set
+Average PSNR: 20.58
+iter 25000      time 1h 04m 17s   sec/eval 147.7   sec/iter 0.15    maintenance 4.5   
+
+Starting iterate the validation set
+Average PSNR: 20.57
+iter 26000      time 1h 06m 49s   sec/eval 147.5   sec/iter 0.15    maintenance 4.4   
+
+Starting iterate the validation set
+Average PSNR: 20.59
+iter 27000      time 1h 09m 22s   sec/eval 147.7   sec/iter 0.15    maintenance 4.5   
+
+Starting iterate the validation set
+Average PSNR: 20.59
+iter 28000      time 1h 11m 53s   sec/eval 147.3   sec/iter 0.15    maintenance 4.6   
+
+Starting iterate the validation set
+Average PSNR: 20.60
+iter 29000      time 1h 20m 49s   sec/eval 531.2   sec/iter 0.53    maintenance 4.5   
+
+Starting iterate the validation set
+Average PSNR: 20.59
+iter 30000      time 1h 30m 12s   sec/eval 558.0   sec/iter 0.56    maintenance 4.4   
+
+Starting iterate the validation set
+Average PSNR: 20.57
+iter 31000      time 1h 39m 28s   sec/eval 552.0   sec/iter 0.55    maintenance 4.4   
+
+Starting iterate the validation set
+Average PSNR: 20.58
+iter 32000      time 1h 48m 44s   sec/eval 551.1   sec/iter 0.55    maintenance 4.4   
+
+Starting iterate the validation set
+Average PSNR: 20.58
+iter 33000      time 1h 58m 00s   sec/eval 551.9   sec/iter 0.55    maintenance 4.5   
+
+Starting iterate the validation set
+Average PSNR: 20.57
+iter 34000      time 2h 07m 00s   sec/eval 535.5   sec/iter 0.54    maintenance 4.4   
+
+Starting iterate the validation set
+Average PSNR: 20.56
+iter 35000      time 2h 16m 21s   sec/eval 557.2   sec/iter 0.56    maintenance 4.4   
+
+Starting iterate the validation set
+Average PSNR: 20.57
+iter 36000      time 2h 25m 38s   sec/eval 552.1   sec/iter 0.55    maintenance 4.4   
+
+Starting iterate the validation set
+Average PSNR: 20.59
+iter 37000      time 2h 34m 52s   sec/eval 549.8   sec/iter 0.55    maintenance 4.5   
+
+Starting iterate the validation set
+Average PSNR: 20.58
+iter 38000      time 2h 44m 08s   sec/eval 551.4   sec/iter 0.55    maintenance 4.4   
+
+Starting iterate the validation set
+Average PSNR: 20.57
+iter 39000      time 2h 53m 08s   sec/eval 535.4   sec/iter 0.54    maintenance 4.4   
+
+Starting iterate the validation set
+Average PSNR: 20.57
+iter 40000      time 3h 02m 29s   sec/eval 541.4   sec/iter 0.54    maintenance 19.9  
+
+Starting iterate the validation set
+Average PSNR: 20.57
+iter 41000      time 3h 11m 44s   sec/eval 550.5   sec/iter 0.55    maintenance 4.5   
+
+Starting iterate the validation set
+Average PSNR: 20.57
+iter 42000      time 3h 20m 57s   sec/eval 548.6   sec/iter 0.55    maintenance 4.5   
+
+Starting iterate the validation set
+Average PSNR: 20.57
+iter 43000      time 3h 30m 13s   sec/eval 550.8   sec/iter 0.55    maintenance 4.4   
+
+Starting iterate the validation set
+Average PSNR: 20.57
+iter 44000      time 3h 39m 28s   sec/eval 551.1   sec/iter 0.55    maintenance 4.4   
+
+Starting iterate the validation set
+Average PSNR: 20.56
+iter 45000      time 3h 48m 34s   sec/eval 541.4   sec/iter 0.54    maintenance 4.5   
+
+Starting iterate the validation set
+Average PSNR: 20.57
+iter 46000      time 3h 57m 48s   sec/eval 549.4   sec/iter 0.55    maintenance 4.5   
+
+Starting iterate the validation set
+Average PSNR: 20.57
+iter 47000      time 4h 07m 01s   sec/eval 548.7   sec/iter 0.55    maintenance 4.5   
+
+Starting iterate the validation set
+Average PSNR: 20.56
+iter 48000      time 4h 16m 14s   sec/eval 548.8   sec/iter 0.55    maintenance 4.5   
+
+Starting iterate the validation set
+Average PSNR: 20.57
+iter 49000      time 4h 25m 29s   sec/eval 549.9   sec/iter 0.55    maintenance 4.5   
+Elapsed time: 4h 34m 35s
+dnnlib: Finished train.train() in 4h 34m 36s.
